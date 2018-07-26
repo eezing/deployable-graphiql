@@ -13,9 +13,17 @@ class IndexPage extends React.Component {
     this.setState({ ready: true });
   }
 
+  static parseEnv(path) {
+    try {
+      return /(?:env=)([^&]+)/.exec(path)[1] || 'default';
+    } catch (error) {
+      return 'default';
+    }
+  }
+
   render() {
     // eslint-disable-next-line
-    const env = this.props.router.query.env || 'default';
+    const env = IndexPage.parseEnv(this.props.router.asPath);
 
     return this.state.ready === true ? (
       <div className="page">
@@ -38,4 +46,5 @@ class IndexPage extends React.Component {
     ) : null;
   }
 }
+
 export default withRouter(IndexPage);
