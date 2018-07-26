@@ -17,7 +17,7 @@ class EnvJsonEditor extends React.Component {
     require('codemirror/addon/edit/matchbrackets');
     require('codemirror/addon/edit/closebrackets');
     require('codemirror/addon/lint/lint');
-    require('../utils/jsonlint');
+    require('../../utils/jsonlint');
     require('codemirror/keymap/sublime');
 
     const value = JSON.stringify(this.props.defaultValue || {}, null, 2);

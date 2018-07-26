@@ -23,7 +23,9 @@ export default class EnvStorage {
 
     const envs = [
       env,
-      ...(JSON.parse(store.getItem(ENVS_KEY)) || []).filter(env => env !== env)
+      ...(JSON.parse(store.getItem(ENVS_KEY)) || []).filter(
+        item => item !== env
+      )
     ];
 
     store.setItem(ENVS_KEY, JSON.stringify(envs));

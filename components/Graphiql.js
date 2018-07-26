@@ -7,6 +7,7 @@ import StorageWithPrefix from '../utils/storage-with-prefix';
 import ToolbarHistoryBtn from './ToolbarHistoryBtn';
 import ToolbarPrettierBtn from './ToolbarPrettierBtn';
 import ToolbarSettingsBtn from './ToolbarSettingsBtn';
+import ToolbarEnvironmentSelect from './ToolbarEnvironmentSelect';
 import EnvStore from '../utils/env-storage';
 
 class Graphiql extends React.Component {
@@ -16,7 +17,7 @@ class Graphiql extends React.Component {
     this.fetcher = this.fetcher.bind(this);
     this.graphiqlRef = React.createRef();
     this.storage = new StorageWithPrefix(props.env);
-    this.state = { ready: false };
+    this.state = { ready: false, envList: [] };
   }
 
   componentDidMount() {
@@ -31,7 +32,7 @@ class Graphiql extends React.Component {
       });
     }
 
-    this.setState({ ready: true });
+    this.setState({ ready: true, envList: EnvStore.listEnvs() });
   }
 
   async fetcher(graphQLParams) {
@@ -61,6 +62,10 @@ class Graphiql extends React.Component {
           <ToolbarHistoryBtn graphiqlRef={this.graphiqlRef} />
           <ToolbarPrettierBtn graphiqlRef={this.graphiqlRef} />
           <ToolbarSettingsBtn env={this.props.env} />
+          <ToolbarEnvironmentSelect
+            current={this.props.env}
+            list={this.state.envList}
+          />
         </GraphiQL.Toolbar>
       </GraphiQL>
     ) : null;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GraphiQL from 'graphiql';
 import Modal from './Modal';
-import EnvSettingsEdit from './EnvSettingsEdit';
+import EnvSettings from './EnvSettings';
 
 class ToolbarSettingsBtn extends React.Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class ToolbarSettingsBtn extends React.Component {
           label="Env Settings"
           onClose={this.closeModal}
           isOpen={this.state.modalOpen}>
-          <EnvSettingsEdit env={this.props.env} onClose={this.closeModal} />
+          <EnvSettings env={this.props.env} onClose={this.closeModal} />
         </Modal>
         <GraphiQL.Button
           onClick={this.openModal}
