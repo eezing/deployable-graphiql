@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToolbarHistoryBtn snapshot 1`] = `
+<a
+  className="toolbar-button"
+  onClick={[Function]}
+  onMouseDown={[Function]}
+  title="History"
+>
+  History
+</a>
+`;

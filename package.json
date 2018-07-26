@@ -1,0 +1,50 @@
+{
+  "scripts": {
+    "dev": "NODE_ENV=development PORT=3000 node dev-server.js",
+    "pretty": "prettier --write '**/*.js'",
+    "test": "rm -rf out || true && npm run test:jest && npm run test:lint",
+    "test:watch": "jest --watch",
+    "test:jest": "jest --coverage",
+    "test:lint": "eslint ./ --ext .js --ext .mjs",
+    "test:gitunstaged": "if ! [[ -z $(git diff) ]]; then echo \"tree has un-staged changes\"; exit 1; fi",
+    "precommit": "npm run test:gitunstaged && npm test",
+    "build": "npm run test && next build",
+    "export": "npm run build && next export"
+  },
+  "name": "graph-iql-next",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.0",
+    "body-parser": "^1.18.3",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "^5.2.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.10.0",
+    "express": "^4.16.3",
+    "husky": "^0.14.3",
+    "jest": "^23.4.1",
+    "prettier": "^1.13.7",
+    "react-test-renderer": "^16.4.1"
+  },
+  "dependencies": {
+    "@zeit/next-css": "^0.2.0",
+    "graphiql": "^0.11.11",
+    "graphql": "^0.13.2",
+    "isomorphic-fetch": "^2.2.1",
+    "jsonlint-mod": "^1.7.2",
+    "next": "^6.1.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-modal": "^3.5.1"
+  }
+}
