@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GraphiQL from 'graphiql';
 
-const EnvMenuItem = ({ name, onClick }) => {
+const EnvMenuItem = ({ name }) => {
   function _onClick() {
-    onClick(name);
+    const search = window.location.search.replace(/env=[^&]+/, `env=${name}`);
+    window.location.search = search;
   }
 
   return (
@@ -17,8 +18,7 @@ const EnvMenuItem = ({ name, onClick }) => {
 };
 
 EnvMenuItem.propTypes = {
-  name: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  name: PropTypes.string.isRequired
 };
 
 export default EnvMenuItem;
