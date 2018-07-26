@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EnvJsonEditor from './EnvJsonEditor';
-import EnvStore from '../utils/env-storage';
+import EnvJsonEditor from './JsonEdit';
+import EnvStore from '../../utils/env-storage';
 
 class EnvSettingsEdit extends React.Component {
   constructor(props) {
