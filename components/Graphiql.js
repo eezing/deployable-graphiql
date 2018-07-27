@@ -26,6 +26,8 @@ class Graphiql extends React.Component {
     if (envStore.getConfig() === null) {
       EnvStore.addEnv(this.props.env);
       envStore.setConfig({
+        host: window.location.origin,
+        path: '/graphql',
         headers: {
           'Content-Type': 'application/json'
         }
@@ -37,10 +39,7 @@ class Graphiql extends React.Component {
 
   async fetcher(graphQLParams) {
     const envStore = new EnvStore(this.props.env);
-
-    const { headers } = envStore.getConfig();
-    const host = this.props.host || window.location.origin;
-    const path = this.props.path || '/graphql';
+    const { host, path, headers } = envStore.getConfig();
 
     const res = await fetch(host + path, {
       method: 'post',
