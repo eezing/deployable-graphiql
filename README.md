@@ -7,3 +7,24 @@ Deployment ready static GraphiQL with additional features.
 - Editable request headers
 - Evironments - Localize GraphiQL data by user defined environment(s)
 - Prettier for GraphQL query formatting
+
+## Getting Started
+
+## Usage
+
+1.  Clone repo
+2.  Run `npm install`
+3.  Run `npm run export`
+4.  Copy content of `./out` to a static dir of some web server
+
+## How To
+
+### Create new environment
+
+Define "env" search param in URL (e.g. `http://localhost:3000?env=dev`).
+
+**Note:** "default" is used when env param is not defined.
+
+### Switch environment
+
+Use "Environment" select button in UI.
