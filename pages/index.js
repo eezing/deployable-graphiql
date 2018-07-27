@@ -2,35 +2,25 @@ import React from 'react';
 import { withRouter } from 'next/router';
 import Head from 'next/head';
 import Graphiql from '../components/Graphiql';
+import { getEnvParam } from '../utils/env-search-param';
 
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { ready: false };
+    this.state = { env: null };
   }
 
   componentDidMount() {
-    this.setState({ ready: true });
-  }
-
-  static parseEnv(path) {
-    try {
-      return /(?:env=)([^&]+)/.exec(path)[1] || 'default';
-    } catch (error) {
-      return 'default';
-    }
+    this.setState({ env: getEnvParam() || 'default' });
   }
 
   render() {
-    // eslint-disable-next-line
-    const env = IndexPage.parseEnv(this.props.router.asPath);
-
-    return this.state.ready === true ? (
+    return this.state.env !== null ? (
       <div className="page">
         <Head>
-          <title>{window.location.host + ' - ' + env}</title>
+          <title>{window.location.host + ' - ' + this.state.env}</title>
         </Head>
-        <Graphiql env={env} />
+        <Graphiql env={this.state.env} />
         <style jsx global>{`
           .page {
             height: 100vh;

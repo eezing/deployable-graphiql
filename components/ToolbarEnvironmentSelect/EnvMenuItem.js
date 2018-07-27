@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GraphiQL from 'graphiql';
+import { setEnvParam } from '../../utils/env-search-param';
 
 const EnvMenuItem = ({ name }) => {
   function _onClick() {
-    const search = window.location.search.replace(/env=[^&]+/, `env=${name}`);
-    window.location.search = search;
+    setEnvParam(name);
   }
 
   return (
