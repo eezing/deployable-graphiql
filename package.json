@@ -11,8 +11,7 @@
     "build": "npm run test && next build",
     "export": "npm run build && next export"
   },
-  "name": "graph-iql-next",
-  "version": "1.0.0",
+  "name": "graphiql-and-more",
   "main": "index.js",
   "keywords": [],
   "author": "",
