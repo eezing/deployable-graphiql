@@ -28,3 +28,7 @@ Define "env" search param in URL (e.g. `http://localhost:3000?env=dev`).
 ### Switch environment
 
 Use "Environment" select button in UI.
+
+### Delete or reset environment
+
+Manually clear entries in browser local storage.
