@@ -8,7 +8,7 @@ Static deployment of GraphiQL with additional features.
 - Evironments - Localize GraphiQL data by user defined environment(s)
 - Prettier for GraphQL query formatting
 
-[View Demo](https://deployable-graphiql-demo.now.sh)
+[View Demo](https://graphiql-and-more.now.sh)
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ Static deployment of GraphiQL with additional features.
 
 1.  Clone repo
 2.  Run `npm install`
-3.  Run `npm run export`
+3.  Run `npm run build`
 4.  Copy content of `./out` to a static dir of some web server
 
 ## How To

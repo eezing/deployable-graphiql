@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "start": "node demo-server",
     "dev": "NODE_ENV=development PORT=3000 node dev-server.js",
     "pretty": "prettier --write '**/*.js'",
     "test": "rm -rf out || true && npm run test:jest && npm run test:lint",
@@ -8,15 +9,13 @@
     "test:lint": "eslint ./ --ext .js --ext .mjs",
     "test:gitunstaged": "if ! [[ -z $(git diff) ]]; then echo \"tree has un-staged changes\"; exit 1; fi",
     "precommit": "npm run test:gitunstaged && npm test",
-    "build": "npm run test && next build",
-    "export": "npm run build && next export"
+    "build": "next build && next export",
+    "now:demo": "now --local-config=now-demo.json && now ln --local-config=now-demo.json"
   },
   "name": "graphiql-and-more",
   "main": "index.js",
-  "keywords": [],
-  "author": "",
+  "author": "Eric Zingeler",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^8.2.6",
