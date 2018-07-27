@@ -1,6 +1,6 @@
-# deployable-graphiql
+# graphiql-and-more
 
-Deployment ready static GraphiQL with additional features.
+Static deployment of GraphiQL with additional features.
 
 **Additions:**
 
