@@ -4,7 +4,7 @@ Deployment ready static GraphiQL with additional features.
 
 **Additions:**
 
-- Editable request headers
+- Editable request URL & headers
 - Evironments - Localize GraphiQL data by user defined environment(s)
 - Prettier for GraphQL query formatting
 
@@ -35,6 +35,6 @@ Use "Environment" select button in UI.
 
 Manually clear entries in browser local storage.
 
-### Edit request headers
+### Edit request config
 
-Click "Settings" button in UI > Modify request headers json > Click "Save".
+Click "Settings" button in UI > Modify request config (json) > Click "Save".
