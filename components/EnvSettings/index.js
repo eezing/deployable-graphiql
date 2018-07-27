@@ -10,7 +10,7 @@ class EnvSettingsEdit extends React.Component {
     this.nodeRef = React.createRef();
     this.state = { config: null };
     this.onSave = this.onSave.bind(this);
-    this.headersRef = React.createRef();
+    this.reqConfigRef = React.createRef();
   }
 
   componentDidMount() {
@@ -20,10 +20,7 @@ class EnvSettingsEdit extends React.Component {
 
   onSave() {
     const store = new EnvStore(this.props.env);
-    store.setConfig({
-      ...this.state.config,
-      headers: this.headersRef.current.getValue()
-    });
+    store.setConfig(this.reqConfigRef.current.getValue());
     this.props.onClose();
   }
 
@@ -42,9 +39,9 @@ class EnvSettingsEdit extends React.Component {
           </div>
         </div>
         <EnvJsonEditor
-          ref={this.headersRef}
-          title="Request Headers"
-          defaultValue={this.state.config.headers}
+          ref={this.reqConfigRef}
+          title="Request Config"
+          defaultValue={this.state.config}
         />
         <style jsx>{`
           h3 {
