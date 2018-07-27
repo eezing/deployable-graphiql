@@ -34,3 +34,7 @@ Use "Environment" select button in UI.
 ### Delete or reset environment
 
 Manually clear entries in browser local storage.
+
+### Edit request headers
+
+Click "Settings" button in UI > Modify request headers json > Click "Save".
