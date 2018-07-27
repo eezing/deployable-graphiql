@@ -9,7 +9,8 @@
     "test:lint": "eslint ./ --ext .js --ext .mjs",
     "test:gitunstaged": "if ! [[ -z $(git diff) ]]; then echo \"tree has un-staged changes\"; exit 1; fi",
     "precommit": "npm run test:gitunstaged && npm test",
-    "build": "next build && next export"
+    "build": "next build && next export",
+    "now:demo": "now && now ln"
   },
   "name": "graphiql-and-more",
   "main": "index.js",
