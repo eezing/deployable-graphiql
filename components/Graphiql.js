@@ -41,11 +41,26 @@ class Graphiql extends React.Component {
     const envStore = new EnvStore(this.props.env);
     const { host, path, headers } = envStore.getConfig();
 
-    const res = await fetch(host + path, {
-      method: 'post',
-      headers,
-      body: JSON.stringify(graphQLParams)
-    });
+    if (this.props.isProxy === true) {
+      var res = await fetch('/proxy', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          host,
+          path,
+          headers,
+          body: graphQLParams
+        })
+      });
+    } else {
+      res = await fetch(host + path, {
+        method: 'post',
+        headers,
+        body: JSON.stringify(graphQLParams)
+      });
+    }
 
     return res.json();
   }
@@ -74,7 +89,8 @@ class Graphiql extends React.Component {
 Graphiql.propTypes = {
   host: PropTypes.string,
   path: PropTypes.string,
-  env: PropTypes.string.isRequired
+  env: PropTypes.string.isRequired,
+  isProxy: PropTypes.bool
 };
 
 export default Graphiql;
