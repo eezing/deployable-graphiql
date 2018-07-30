@@ -12,11 +12,11 @@ Static deployment of GraphiQL with additional features.
 
 ## Getting Started
 
-## Usage
+## Usage (static build)
 
 1.  Clone repo
 2.  Run `npm install`
-3.  Run `npm run build`
+3.  Run `npm run build:static`
 4.  Copy content of `./out` to a static dir of some web server
 
 ## How To
