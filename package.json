@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node demo-server",
+    "start": "IS_PROXY=true node server",
     "dev": "NODE_ENV=development PORT=3000 node server.js",
     "pretty": "prettier --write '**/*.js'",
     "test": "rm -rf out || true && npm run test:jest && npm run test:lint",
@@ -9,7 +9,8 @@
     "test:lint": "eslint ./ --ext .js --ext .mjs",
     "test:gitunstaged": "if ! [[ -z $(git diff) ]]; then echo \"tree has un-staged changes\"; exit 1; fi",
     "precommit": "npm run test:gitunstaged && npm test",
-    "build:static": "next build && next export",
+    "build": "next build",
+    "build:static": "npm run build && next export",
     "now:demo": "now --local-config=now-demo.json && now ln --local-config=now-demo.json"
   },
   "name": "graphiql-and-more",

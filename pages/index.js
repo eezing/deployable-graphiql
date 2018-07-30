@@ -1,6 +1,7 @@
-const IS_PROXY = false;
+const isProxy = process.env.IS_PROXY === 'true';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import Head from 'next/head';
 import Graphiql from '../components/Graphiql';
@@ -10,6 +11,10 @@ class IndexPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = { env: null };
+  }
+
+  static getInitialProps() {
+    return { isProxy };
   }
 
   componentDidMount() {
@@ -22,7 +27,7 @@ class IndexPage extends React.Component {
         <Head>
           <title>{window.location.host + ' - ' + this.state.env}</title>
         </Head>
-        <Graphiql env={this.state.env} isProxy={IS_PROXY} />
+        <Graphiql env={this.state.env} isProxy={this.props.isProxy} />
         <style jsx global>{`
           .page {
             height: 100vh;
@@ -38,5 +43,9 @@ class IndexPage extends React.Component {
     ) : null;
   }
 }
+
+IndexPage.propTypes = {
+  isProxy: PropTypes.bool
+};
 
 export default withRouter(IndexPage);
