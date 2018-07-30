@@ -1,12 +1,15 @@
 'use strict';
 
+const isDev = process.env.NODE_ENV === 'development';
 const PORT = process.env.PORT;
+
 const express = require('express');
 const bodyParser = require('body-parser');
-const graphql = require('./dev-graphql');
 const next = require('next');
-const client = next({ dev: true });
+const client = next({ dev: isDev });
 const app = express();
+const fetch = require('isomorphic-fetch');
+const graphql = require('./dev-graphql');
 
 client.prepare().then(() => {
   const clientHandler = client.getRequestHandler();
@@ -26,8 +29,23 @@ client.prepare().then(() => {
 
       res.send(result);
     } catch (error) {
-      res.status(500).send();
-      console.error(error); //eslint-disable-line
+      res.status(500).send(error);
+    }
+  });
+
+  app.post('/proxy', async (req, res) => {
+    const proxyReq = req.body;
+
+    try {
+      const result = await fetch(proxyReq.host + proxyReq.path, {
+        method: 'post',
+        headers: proxyReq.headers,
+        body: JSON.stringify(proxyReq.body)
+      });
+
+      res.send(await result.json());
+    } catch (error) {
+      res.send(error);
     }
   });
 

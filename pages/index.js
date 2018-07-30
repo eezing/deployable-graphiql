@@ -1,3 +1,5 @@
+const IS_PROXY = false;
+
 import React from 'react';
 import { withRouter } from 'next/router';
 import Head from 'next/head';
@@ -20,7 +22,7 @@ class IndexPage extends React.Component {
         <Head>
           <title>{window.location.host + ' - ' + this.state.env}</title>
         </Head>
-        <Graphiql env={this.state.env} />
+        <Graphiql env={this.state.env} isProxy={IS_PROXY} />
         <style jsx global>{`
           .page {
             height: 100vh;
